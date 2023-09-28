@@ -1,0 +1,6 @@
+baseURL = "https://capture-ins.com/"
+languageCode = 'en-us'
+title = "Kamera Bollinger"
+theme = "ins"
+[markup.goldmark.renderer]
+  unsafe = true

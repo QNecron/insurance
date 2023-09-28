@@ -1,0 +1,55 @@
+<div class="card" card-theme="{{ .Get "theme" | default "none" }}">
+
+  {{ if and ( .Get "imgDesktop" ) ( .Get "imgMobile" ) }}
+  <picture class="card__asset">
+    <source srcset="{{ .Get "imgDesktop" }}"
+      media="(min-width: 768px)"
+      height="{{ .Get "imgDesktopHeight" | default "1080px" }}"
+      width="{{ .Get "imgDesktopWidth" | default "1920px" }}">
+    <img src="{{ .Get "imgMobile" }}" class="card__asset-img"
+      height="{{ .Get "imgMobileHeight" | default "853px" }}"
+      width="{{ .Get "imgMobileWidth" | default "480px" }}"
+      alt="" loading="lazy">
+  </picture>
+  {{ end }}
+
+  <div class="card__content">
+
+    {{ if .Get "link" }}
+    <a href="{{ .Get "link" }}" class="card__link">
+    {{ end }}
+
+      {{ if or ( .Get "heading1") ( .Get "heading2" ) }}
+      <h3 class="card__heading">
+        {{ if .Get "heading1" }}
+          <span class="card__heading-1">{{ .Get "heading1" }}</span>
+        {{ end }}
+        {{ if .Get "heading2" }}
+          <span class="card__heading-2">{{ .Get "heading2" }}</span>
+        {{ end }}
+      </h3>
+      {{ end }}
+
+      {{ if .Get "copy" }}
+      <p class="card__copy">{{ .Get "copy" }}</p>
+      {{ end }}
+
+      {{ if or (.Get "url1") (.Get "url2") }}
+      <div class="card__ctas">
+        {{ if and ( .Get "url1" ) ( .Get "cta1" ) }}
+        <a href="{{ .Get "url1" }}" class="card__cta">{{ .Get "cta1" }}</a>
+        {{ end }}
+
+        {{ if and ( .Get "url1" ) ( .Get "cta1" ) }}
+        <a href="{{ .Get "url1" }}" class="card__cta">{{ .Get "cta1" }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+
+    {{ if .Get "link" }}
+    </a>
+    {{ end }}
+
+  </div>
+
+</div>
